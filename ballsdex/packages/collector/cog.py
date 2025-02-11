@@ -36,7 +36,7 @@ T1Req = 40
 T1Rarity = 0.025
 
 # AMOUNT NEEDED FOR **MOST** COMMON CC BALL e.g. djibouti
-CommonReq = 700
+CommonReq = 400
 
 # RARITY OF MOST COMMON BALL e.g. djibouti
 # (Which was originally inputted into admin panel or /admin balls create)
