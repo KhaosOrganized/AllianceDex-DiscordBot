@@ -64,11 +64,11 @@ from ballsdex.core.models import (
 # 6. Step 3-5 is repeated until the boss' HP runs out, but you can end early with Step 7.
 # 7. /boss admin conclude ends the boss battle and rewards the winner, but you can choose to have *no* winner (ADMIN ONLY)
 
-SHINYBUFFS = [1000,1000] # Shiny Buffs
+SHINYBUFFS = [2500,2500] # Shiny Buffs
 # ATK, HP
-MAXSTATS = [5000,5000] # Max stats a card is limited to (before buffs)
+MAXSTATS = [30000,30000] # Max stats a card is limited to (before buffs)
 # ATK, HP
-DAMAGERNG = [0,2000] # Damage a boss can deal IF attack_amount has NOT been inputted in /boss admin attack.
+DAMAGERNG = [0,5000] # Damage a boss can deal IF attack_amount has NOT been inputted in /boss admin attack.
 # Min Damage, Max Damage
 
 LOGCHANNEL = settings.log_channel
