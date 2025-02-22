@@ -429,7 +429,7 @@ class Player(models.Model):
     privacy_policy = fields.IntEnumField(
         PrivacyPolicy,
         description="How you want to handle privacy",
-        default=PrivacyPolicy.DENY,
+        default=PrivacyPolicy.ALLOW,
     )
     mention_policy = fields.IntEnumField(
         MentionPolicy,
