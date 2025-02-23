@@ -428,6 +428,18 @@ class Boss(commands.GroupCog):
             messageforuser = f"{ball.description(short=True, include_emoji=True, bot=self.bot)} has been selected for this round, with {ballattack}+{SHINYBUFFS[0]} ATK and {ballhealth}+{SHINYBUFFS[1]} HP"
             ballhealth += SHINYBUFFS[1]
             ballattack += SHINYBUFFS[0]
+        elif "👑" in messageforuser:
+            messageforuser = f"{ball.description(short=True, include_emoji=True, bot=self.bot)} has been selected for this round, with {ballattack}+{6500} ATK and {ballhealth}+{6500} HP"
+            ballhealth += 6500
+            ballattack += 6500
+        elif "🌟" in messageforuser:
+            messageforuser = f"{ball.description(short=True, include_emoji=True, bot=self.bot)} has been selected for this round, with {ballattack}+{5000} ATK and {ballhealth}+{5000} HP"
+            ballhealth += 5000
+            ballattack += 5000
+        elif "🏆" in messageforuser:
+            messageforuser = f"{ball.description(short=True, include_emoji=True, bot=self.bot)} has been selected for this round, with {ballattack}+{3000} ATK and {ballhealth}+{3000} HP"
+            ballhealth += 3000
+            ballattack += 3000
         else:
             pass
 
