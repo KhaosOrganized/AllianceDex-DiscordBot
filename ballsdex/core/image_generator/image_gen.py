@@ -1,7 +1,7 @@
 import os
 import textwrap
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
@@ -42,11 +42,14 @@ credits_color_cache = {}
 
 def get_credit_color(image: Image.Image, region: tuple) -> tuple:
     image = image.crop(region)
-    brightness = sum(image.convert("L").getdata()) / image.width / image.height
+    brightness = sum(image.convert("L").getdata()) / image.width / image.height  # type: ignore
     return (0, 0, 0, 255) if brightness > 100 else (255, 255, 255, 255)
 
 
-def draw_card(ball_instance: "BallInstance", media_path: str = "./admin_panel/media/"):
+def draw_card(
+    ball_instance: "BallInstance",
+    media_path: str = "./admin_panel/media/",
+) -> tuple[Image.Image, dict[str, Any]]:
     ball = ball_instance.countryball
     ball_health = (237, 115, 101, 255)
     ball_credits = ball.credits
@@ -73,7 +76,10 @@ def draw_card(ball_instance: "BallInstance", media_path: str = "./admin_panel/me
         stroke_width=2,
         stroke_fill=(0, 0, 0, 255),
     )
-    for i, line in enumerate(textwrap.wrap(f"Ability: {ball.capacity_name}", width=26)):
+
+    cap_name = textwrap.wrap(f"Ability: {ball.capacity_name}", width=26)
+
+    for i, line in enumerate(cap_name):
         draw.text(
             (100, 1050 + 100 * i),
             line,
@@ -84,12 +90,13 @@ def draw_card(ball_instance: "BallInstance", media_path: str = "./admin_panel/me
         )
     for i, line in enumerate(textwrap.wrap(ball.capacity_description, width=32)):
         draw.text(
-            (60, 1300 + 80 * i),
+            (60, 1100 + 100 * len(cap_name) + 80 * i),
             line,
             font=capacity_description_font,
             stroke_width=1,
             stroke_fill=(0, 0, 0, 255),
         )
+
     draw.text(
         (320, 1670),
         str(ball_instance.health),
@@ -134,4 +141,4 @@ def draw_card(ball_instance: "BallInstance", media_path: str = "./admin_panel/me
         icon.close()
     artwork.close()
 
-    return image
+    return image, {"format": "WEBP"}

@@ -78,6 +78,7 @@ class Player(models.Model):
     friend_policy = models.SmallIntegerField(
         choices=FriendPolicy.choices, help_text="Open or close your friend requests"
     )
+    extra_data = models.JSONField(blank=True, default=dict)
 
     def is_blacklisted(self) -> bool:
         blacklist = cast(
@@ -169,7 +170,7 @@ class Special(models.Model):
 
 
 class Ball(models.Model):
-    country = models.CharField(unique=True, max_length=48)
+    country = models.CharField(unique=True, max_length=48, verbose_name="Name")
     health = models.IntegerField(help_text="Ball health stat")
     attack = models.IntegerField(help_text="Ball attack stat")
     rarity = models.FloatField(help_text="Rarity of this ball")
@@ -253,6 +254,8 @@ class Ball(models.Model):
     class Meta:
         managed = True
         db_table = "ball"
+        verbose_name = settings.collectible_name
+        verbose_name_plural = settings.plural_collectible_name
 
 
 class BallInstance(models.Model):
@@ -320,6 +323,7 @@ class BallInstance(models.Model):
         managed = True
         db_table = "ballinstance"
         unique_together = (("player", "id"),)
+        verbose_name = f"{settings.collectible_name} instance"
 
 
 class BlacklistedID(models.Model):
