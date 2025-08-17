@@ -29,14 +29,14 @@ if TYPE_CHECKING:
 # You must be have version 2.22.0 Ballsdex or diamond will not work.
 
 # AMOUNT NEEDED FOR TOP 1 CC BALL e.g. reichtangle
-T1Req = 40
+T1Req = 50
 
 # RARITY OF TOP 1 BALL e.g. reichtangle
 # (If not originally inputted as 1 into admin panel or /admin balls create)
 T1Rarity = 0.025
 
 # AMOUNT NEEDED FOR **MOST** COMMON CC BALL e.g. djibouti
-CommonReq = 400
+CommonReq = 650
 
 # RARITY OF MOST COMMON BALL e.g. djibouti
 # (Which was originally inputted into admin panel or /admin balls create)
